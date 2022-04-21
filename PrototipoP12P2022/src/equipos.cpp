@@ -79,7 +79,7 @@ void equipos::establecerEntrenador( string entrenadorString )
    // copiar a lo más 15 caracteres de la cadena en apellido
    const char *valorEntrenador = entrenadorString.data();
    int longitud = strlen( valorEntrenador );
-   longitud = ( longitud < 16 ? longitud : 15 );
+   longitud = ( longitud < 41 ? longitud : 40 );
    strncpy( entrenador, valorEntrenador, longitud );
 
    // anexar caracter nulo al apellido
@@ -161,7 +161,7 @@ void equipos::actualizarRegistro( fstream &actualizarArchivo )
 
          cout << left << setw( 10 ) << "ID" << setw( 16 )
        << "Nombre" << setw( 15 ) << "Deporte"
-       << setw( 16 ) <<"Entrenador"<<setw( 6 )<<"Numero de Jugadores" << endl;
+       << setw( 41 ) <<"Entrenador"<<setw( 6 )<<"Numero de Jugadores" << endl;
       mostrarLinea( cout, team );
 
 
@@ -218,7 +218,7 @@ void equipos::actualizarRegistro( fstream &actualizarArchivo )
       // actualizar el saldo del registro
       cout << left << setw( 10 ) << "ID" << setw( 16 )
        << "Nombre" << setw( 15 ) << "Deporte"
-       << setw( 16 ) <<"Entrenador"<<setw( 6 )<<"Numero de Jugadores" << endl;
+       << setw( 41 ) <<"Entrenador"<<setw( 6 )<<"Numero de Jugadores" << endl;
       mostrarLinea( cout, team );
 
       // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
@@ -259,7 +259,7 @@ void equipos::nuevoRegistro( fstream &insertarEnArchivo )
 
       char nombre[ 15 ];
       char deporte[ 16 ];
-      char entrenador[ 17 ];
+      char entrenador[ 40 ];
       int jugadores;
 
       // el usuario introduce el apellido, primer nombre y saldo
@@ -268,7 +268,7 @@ void equipos::nuevoRegistro( fstream &insertarEnArchivo )
       cout << "Escriba el deporte: " << endl;
       cin >> setw( 16 ) >> deporte;
       cout << "Escriba el nombre del entrenador: "<<endl;
-      cin >> setw( 17 ) >> entrenador;
+      cin >> setw( 41 ) >> entrenador;
       cout << "Escriba el numero de jugadores: "<<endl;
       cin >> setw(6)>> jugadores;
 
@@ -340,7 +340,7 @@ void equipos::consultarRegistro( fstream &leerDeArchivo )
 
    cout << left << setw( 10 ) << "ID" << setw( 16 )
        << "Nombre" << setw( 15 ) << "Deporte"
-       << setw( 16 ) <<"Entrenador"<<setw( 6 )<<"Numero de Jugadores" << endl;
+       << setw( 41 ) <<"Entrenador"<<setw( 6 )<<"Numero de Jugadores" << endl;
 
    // colocar el apuntador de posición de archivo al principio del archivo de registros
    leerDeArchivo.seekg( 0 );
@@ -371,7 +371,7 @@ void equipos::mostrarLinea( ostream &salida, const equipos &registro )
    salida << left << setw( 10 ) << registro.obtenerNumeroId()
           << setw( 15 ) << registro.obtenerNombre().data()
           << setw( 16 ) << registro.obtenerDeporte().data()
-          << setw( 17) << registro.obtenerEntrenador().data()
+          << setw( 41 ) << registro.obtenerEntrenador().data()
           << setw( 6 ) << registro.obtenerJugadores()<<endl;
 
 } // fin de la función mostrarLinea
@@ -380,7 +380,7 @@ void equipos::mostrarLineaPantalla( const equipos &registro )
    cout << left << setw( 10 ) << registro.obtenerNumeroId()
           << setw( 15 ) << registro.obtenerNombre().data()
           << setw( 16 ) << registro.obtenerDeporte().data()
-          << setw( 17) << registro.obtenerEntrenador().data()
+          << setw( 41 ) << registro.obtenerEntrenador().data()
           << setw( 6 ) << registro.obtenerJugadores()<<endl;
 } // fin de la función mostrarLineaPantalla
 
@@ -451,7 +451,7 @@ if ( team.obtenerNumeroId() != 0 ) {
       // actualizar el saldo del registro
       cout << left << setw( 10 ) << "ID" << setw( 16 )
        << "Nombre" << setw( 15 ) << "Deporte"
-       << setw( 16 ) <<"Entrenador"<<setw( 6 )<<"Numero de Jugadores" << endl;
+       << setw( 41 ) <<"Entrenador"<<setw( 6 )<<"Numero de Jugadores" << endl;
       mostrarLinea( cout, team );
 
       // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
