@@ -9,19 +9,20 @@
 	<iostream>
 	"menus.h"
 
-1650560027 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\main.cpp
+1650570277 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\main.cpp
 	<iostream>
 	"menus.h"
+	"Usuarios.h"
 
-1650568808 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\menus.cpp
+1650569547 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\menus.cpp
 	<iostream>
 	"menus.h"
 	"equipos.h"
 	"jugador.h"
 
-1650568510 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\menus.h
+1650569547 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\menus.h
 
-1650568265 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\equipos.cpp
+1650569547 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\equipos.cpp
 	"equipos.h"
 	<iostream>
 	<conio.h>
@@ -30,14 +31,14 @@
 	<iomanip>
 	<cstdlib>
 
-1650568265 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\equipos.h
+1650569547 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\equipos.h
 	<iostream>
 	<conio.h>
 	<fstream>
 	<iomanip>
 	<cstdlib>
 
-1650568489 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\jugador.cpp
+1650569547 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\jugador.cpp
 	"jugador.h"
 	<iostream>
 	<conio.h>
@@ -46,10 +47,18 @@
 	<iomanip>
 	<cstdlib>
 
-1650568265 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\jugador.h
+1650569547 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\jugador.h
 	<iostream>
 	<conio.h>
 	<fstream>
 	<iomanip>
 	<cstdlib>
+
+1650570265 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\usuarios.h
+	<iostream>
+
+1650570304 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\usuarios.cpp
+	"Usuarios.h"
+	<conio.h>
+	<iostream>
 
