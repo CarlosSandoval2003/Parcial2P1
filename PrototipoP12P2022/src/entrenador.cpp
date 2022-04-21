@@ -1,4 +1,4 @@
-#include "jugador.h"
+#include "entrenador.h"
 #include <iostream>
 #include<conio.h>
 using namespace std;
@@ -8,36 +8,35 @@ using std::string;
 #include <iomanip>
 #include <cstdlib>
 
-jugador::jugador(int valorNumeroId,
-   string valorApellido, string valorNombre, int valorEdad, string valorEquipo, string valorPosicion)
+entrenador::entrenador(int valorNumeroId,
+   string valorApellido, string valorNombre, string valorNac, string valorEquipo)
 {
    establecerId( valorNumeroId );
    establecerApellido( valorApellido );
    establecerNombre( valorNombre );
-   establecerEdad(valorEdad);
+   establecerNac(valorNac);
    establecerEquipo( valorEquipo );
-   establecerPosicion(valorPosicion);
 }
 
-int jugador::obtenerNumeroId() const
+int entrenador::obtenerNumeroId() const
 {
    return numeroId;
 
 }
 
-void jugador::establecerId( int valorNumeroId )
+void entrenador::establecerId( int valorNumeroId )
 {
    numeroId = valorNumeroId;
 
 }
 
-string jugador::obtenerApellido() const
+string entrenador::obtenerApellido() const
 {
    return apellido;
 
 }
 
-void jugador::establecerApellido( string apellidoString )
+void entrenador::establecerApellido( string apellidoString )
 {
    // copiar a lo más 15 caracteres de la cadena en apellido
    const char *valorApellido = apellidoString.data();
@@ -50,13 +49,13 @@ void jugador::establecerApellido( string apellidoString )
 
 }
 
-string jugador::obtenerNombre() const
+string entrenador::obtenerNombre() const
 {
    return nombre;
 
 }
 
-void jugador::establecerNombre( string nombreString )
+void entrenador::establecerNombre( string nombreString )
 {
    // copiar a lo más 15 caracteres de la cadena en apellido
    const char *valorNombre = nombreString.data();
@@ -69,25 +68,33 @@ void jugador::establecerNombre( string nombreString )
 
 }
 
-int jugador::obtenerEdad() const
+string entrenador::obtenerNac() const
 {
-   return edad;
+   return fechaNac;
 
 }
 
-void jugador::establecerEdad( int valorEdad )
+void entrenador::establecerNac( string nacString )
 {
-   edad = valorEdad;
+   // copiar a lo más 15 caracteres de la cadena en apellido
+   const char *valorNac = nacString.data();
+   int longitud = strlen( valorNac );
+   longitud = ( longitud < 13 ? longitud : 12 );
+   strncpy( fechaNac, valorNac, longitud );
+
+   // anexar caracter nulo al apellido
+   fechaNac[ longitud ] = '\0';
 
 }
 
-string jugador::obtenerEquipo() const
+
+string entrenador::obtenerEquipo() const
 {
    return equipo;
 
 }
 
-void jugador::establecerEquipo( string equipoString )
+void entrenador::establecerEquipo( string equipoString )
 {
    // copiar a lo más 15 caracteres de la cadena en apellido
    const char *valorEquipo = equipoString.data();
@@ -100,32 +107,13 @@ void jugador::establecerEquipo( string equipoString )
 
 }
 
-string jugador::obtenerPosicion() const
-{
-   return posicion;
-
-}
-
-void jugador::establecerPosicion( string posicionString )
-{
-   // copiar a lo más 15 caracteres de la cadena en apellido
-   const char *valorPosicion = posicionString.data();
-   int longitud = strlen( valorPosicion );
-   longitud = ( longitud < 5 ? longitud : 4 );
-   strncpy( posicion, valorPosicion, longitud );
-
-   // anexar caracter nulo al apellido
-   posicion[ longitud ] = '\0';
-
-}
 
 
 
-
-void jugador::imprimirRegistro( fstream &leerDeArchivo )
+void entrenador::imprimirRegistro( fstream &leerDeArchivo )
 {
    // crear archivo de texto
-   ofstream archivoImprimirSalida( "ReporteJugadores.txt", ios::out );
+   ofstream archivoImprimirSalida( "ReporteEntrenadores.txt", ios::out );
 
    // salir del programa si ofstream no puede crear el archivo
    if ( !archivoImprimirSalida ) {
@@ -136,15 +124,15 @@ void jugador::imprimirRegistro( fstream &leerDeArchivo )
 
    archivoImprimirSalida << left << setw( 10 ) << "ID" << setw( 16 )
        << "Apellido" << setw( 17 ) << "Nombre"
-       << setw( 10 ) <<"Edad"<<setw( 18 )<<"Equipo"<<setw( 5 )<<"Posicion"<<endl;
+       << setw( 25) <<"Fecha de Nacimiento"<<setw( 18 )<<"Equipo"<<endl;
 
    // colocar el apuntador de posición de archivo al principio del archivo de registros
    leerDeArchivo.seekg( 0 );
 
    // leer el primer registro del archivo de registros
-   jugador player;
+   entrenador player;
    leerDeArchivo.read( reinterpret_cast< char * >( &player ),
-      sizeof( jugador ) );
+      sizeof( entrenador ) );
 
    // copiar todos los registros del archivo de registros en el archivo de texto
    while ( !leerDeArchivo.eof() ) {
@@ -155,33 +143,33 @@ void jugador::imprimirRegistro( fstream &leerDeArchivo )
 
       // leer siguiente registro del archivo de registros
       leerDeArchivo.read( reinterpret_cast< char * >( &player),
-         sizeof( jugador ) );
+         sizeof( entrenador ) );
 
    } // fin de instrucción while
 
 }
 
 
-void jugador::actualizarRegistro( fstream &actualizarArchivo )
+void entrenador::actualizarRegistro( fstream &actualizarArchivo )
 {
    // obtener el número de cuenta a actualizar
-   int numeroId = obtenerId( "Escriba el ID del Jugador a modificar" );
+   int numeroId = obtenerId( "Escriba el ID del Entrenador a modificar" );
 
    // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
    actualizarArchivo.seekg(
-      ( numeroId - 1 ) * sizeof( jugador ) );
+      ( numeroId - 1 ) * sizeof( entrenador ) );
 
    // leer el primer registro del archivo
-   jugador player;
+   entrenador player;
    actualizarArchivo.read( reinterpret_cast< char * >( &player ),
-      sizeof( jugador ) );
+      sizeof( entrenador ) );
     int choice;
    // actualizar el registro
    if ( player.obtenerNumeroId() != 0 ) {
 
          cout << left << setw( 10 ) << "ID" << setw( 16 )
        << "Apellido" << setw( 17 ) << "Nombre"
-       << setw( 10 ) <<"Edad"<<setw( 18 )<<"Equipo"<<setw( 5 )<<"Posicion"<< endl;
+       << setw( 25 ) <<"Fecha de Nacimiento"<<setw( 18 )<<"Equipo"<< endl;
       mostrarLinea( cout, player );
 
 
@@ -190,10 +178,9 @@ void jugador::actualizarRegistro( fstream &actualizarArchivo )
       cout <<"¿Que desea modificar?"<<endl;
 	  cout<<"1. Apellido"<<endl;
 	  cout<<"2. Nombre"<<endl;
-	  cout<<"3. Edad"<<endl;
+	  cout<<"3. Fecha de Nacimiento"<<endl;
 	  cout<<"4. Equipo"<<endl;
-	  cout<<"5. Posicion"<<endl;
-	  cout<<"6. Cancelar"<<endl;
+	  cout<<"5. Cancelar"<<endl;
 	  cin >> choice;
     switch(choice)
     {
@@ -214,12 +201,11 @@ void jugador::actualizarRegistro( fstream &actualizarArchivo )
             player.establecerNombre( cambioNombre );}
             break;
         case 3:
-            {cout << "Ingrese la nueva Edad: "<<endl;
-            int cambioEdad; // cargo o abono
-            cin >> cambioEdad;
-
+            {cout << "Ingrese la nueva fecha: "<<endl;
+            string cambioFecha; // cargo o abono
+            cin >> cambioFecha;
       // actualizar el saldo del registro
-            player.establecerEdad(cambioEdad);}
+            player.establecerNac(cambioFecha);}
             break;
         case 4:
             {cout << "Ingrese el nombre del nuevo equipo: "<<endl;
@@ -230,14 +216,6 @@ void jugador::actualizarRegistro( fstream &actualizarArchivo )
             player.establecerEquipo( cambioEquipo );}
             break;
         case 5:
-            {cout << "Ingrese la nueva posicion: "<<endl;
-            string cambioPosicion; // cargo o abono
-            cin >> cambioPosicion;
-
-        // actualizar el saldo del registro
-            player.establecerPosicion( cambioPosicion );}
-            break;
-        case 6:
             cout << "Modificacion cancelada, empleado sin cambios "<<endl;
             break;
         default:
@@ -247,17 +225,17 @@ void jugador::actualizarRegistro( fstream &actualizarArchivo )
       // actualizar el saldo del registro
       cout << left << setw( 10 ) << "ID" << setw( 16 )
        << "Apellido" << setw( 17 ) << "Nombre"
-       << setw( 10 ) <<"Edad"<<setw( 18 )<<"Equipo"<<setw( 5 )<<"Posicion"<< endl;
+       << setw( 25 ) <<"Fecha de Nacimiento"<<setw( 18 )<<"Equipo"<< endl;
       mostrarLinea( cout, player );
 
       // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
       actualizarArchivo.seekp(
-         ( numeroId - 1 ) * sizeof( jugador ) );
+         ( numeroId - 1 ) * sizeof( entrenador ) );
 
       // escribir el registro actualizado sobre el registro anterior en el archivo
       actualizarArchivo.write(
          reinterpret_cast< const char * >( &player ),
-         sizeof( jugador ) );
+         sizeof( entrenador ) );
 
    } // fin de instrucción if
 
@@ -270,26 +248,26 @@ void jugador::actualizarRegistro( fstream &actualizarArchivo )
 }
 
 
-void jugador::nuevoRegistro( fstream &insertarEnArchivo )
+void entrenador::nuevoRegistro( fstream &insertarEnArchivo )
 {
    // obtener el número de cuenta a crear
-   int numeroId = obtenerId( "Ingrese el ID del nuevo jugador: " );
+   int numeroId = obtenerId( "Ingrese el ID del nuevo entrenador: " );
 
    // desplazar el apuntador de posición del archivo hasta el registro correcto en el archivo
    insertarEnArchivo.seekg(
-      ( numeroId - 1 ) * sizeof( jugador ) );
+      ( numeroId - 1 ) * sizeof( entrenador ) );
 
    // leer el registro del archivo
-   jugador player;
+   entrenador player;
    insertarEnArchivo.read( reinterpret_cast< char * >( &player ),
-      sizeof( jugador ) );
+      sizeof( entrenador ) );
 
    // crear el registro, si éste no existe ya
    if ( player.obtenerNumeroId() == 0 ) {
 
       char apellido[ 15 ];
       char nombre[ 16 ];
-      int edad;
+      char fechaNac[ 12 ];
       char equipo[ 17 ];
       char posicion[ 4 ];
 
@@ -299,29 +277,26 @@ void jugador::nuevoRegistro( fstream &insertarEnArchivo )
       cin >> setw( 15 ) >> apellido;
       cout << "Escriba el nombre: " << endl;
       cin >> setw( 16 ) >> nombre;
-      cout << "Escriba la edad: "<<endl;
-      cin >> setw( 10 ) >> edad;
+      cout << "Escriba la fecha de nacimiento: "<<endl;
+      cin >> setw( 12 ) >> fechaNac;
       cout << "Escriba el nombre del equipo: "<<endl;
       cin >> setw(17)>> equipo;
-      cout << "Escriba la posicion: "<<endl;
-      cin >> setw(5)>> posicion;
 
       // usar valores para llenar los valores de la cuenta
       player.establecerApellido( apellido );
       player.establecerNombre( nombre );
-      player.establecerEdad( edad );
+      player.establecerNac( fechaNac );
       player.establecerEquipo( equipo );
-      player.establecerPosicion( posicion );
       player.establecerId( numeroId );
 
       // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
       insertarEnArchivo.seekp( ( numeroId - 1 ) *
-         sizeof( jugador ) );
+         sizeof( entrenador ) );
 
       // insertar el registro en el archivo
       insertarEnArchivo.write(
          reinterpret_cast< const char * >( &player ),
-         sizeof( jugador ) );
+         sizeof( entrenador ) );
 
    } // fin de instrucción if
 
@@ -333,34 +308,34 @@ void jugador::nuevoRegistro( fstream &insertarEnArchivo )
 }
 
 
-void jugador::eliminarRegistro( fstream &eliminarDeArchivo )
+void entrenador::eliminarRegistro( fstream &eliminarDeArchivo )
 {
    // obtener número de cuenta a eliminar
    int numeroId = obtenerId( "Escriba el ID del equipo a eliminar" );
 
    // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
    eliminarDeArchivo.seekg(
-      ( numeroId - 1 ) * sizeof( jugador ) );
+      ( numeroId - 1 ) * sizeof( entrenador ) );
 
    // leer el registro del archivo
-   jugador player;
+   entrenador player;
    eliminarDeArchivo.read( reinterpret_cast< char * >( &player ),
-      sizeof( jugador ) );
+      sizeof( entrenador ) );
 
    // eliminar el registro, si es que existe en el archivo
    if ( player.obtenerNumeroId() != 0 ) {
-      jugador jugadorEnBlanco;
+      entrenador entrenadorEnBlanco;
 
       // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
       eliminarDeArchivo.seekp( ( numeroId - 1 ) *
-         sizeof( jugador ) );
+         sizeof( entrenador ) );
 
       // reemplazar el registro existente con un registro en blanco
       eliminarDeArchivo.write(
-         reinterpret_cast< const char * >( &jugadorEnBlanco ),
-         sizeof( jugador ) );
+         reinterpret_cast< const char * >( &entrenadorEnBlanco ),
+         sizeof( entrenador ) );
 
-      cout << "Jugador con ID #" << numeroId << " eliminado.\n";
+      cout << "Entrenador con ID #" << numeroId << " eliminado.\n";
 
    } // fin de instrucción if
 
@@ -370,20 +345,20 @@ void jugador::eliminarRegistro( fstream &eliminarDeArchivo )
 
 }
 
-void jugador::consultarRegistro( fstream &leerDeArchivo )
+void entrenador::consultarRegistro( fstream &leerDeArchivo )
 {
 
    cout << left << setw( 10 ) << "ID" << setw( 16 )
        << "Apellido" << setw( 17 ) << "Nombre"
-       << setw( 10 ) <<"Edad"<<setw( 18 )<<"Equipo"<<setw( 5 )<<"Posicion" << endl;
+       << setw( 25 ) <<"Fecha de Nacimiento"<<setw( 18 )<<"Equipo"<< endl;
 
    // colocar el apuntador de posición de archivo al principio del archivo de registros
    leerDeArchivo.seekg( 0 );
 
    // leer el primer registro del archivo de registros
-   jugador player;
+   entrenador player;
    leerDeArchivo.read( reinterpret_cast< char * >( &player ),
-      sizeof( jugador ) );
+      sizeof( entrenador ) );
 
    // copiar todos los registros del archivo de registros en el archivo de texto
    while ( !leerDeArchivo.eof() ) {
@@ -394,35 +369,33 @@ void jugador::consultarRegistro( fstream &leerDeArchivo )
 
       // leer siguiente registro del archivo de registros
       leerDeArchivo.read( reinterpret_cast< char * >( &player),
-         sizeof( jugador ) );
+         sizeof( entrenador ) );
 
    } // fin de instrucción while
 
 }
 
 
-void jugador::mostrarLinea( ostream &salida, const jugador &registro )
+void entrenador::mostrarLinea( ostream &salida, const entrenador &registro )
 {
    salida << left << setw( 10 ) << registro.obtenerNumeroId()
           << setw( 15 ) << registro.obtenerApellido().data()
           << setw( 16 ) << registro.obtenerNombre().data()
-          << setw( 10 ) << registro.obtenerEdad()
-          << setw( 17 ) << registro.obtenerEquipo().data()
-          << setw( 5 ) << registro.obtenerPosicion().data()<<endl;
+          << setw( 12 ) << registro.obtenerNac().data()
+          << setw( 17 ) << registro.obtenerEquipo().data()<<endl;
 
 } // fin de la función mostrarLinea
-void jugador::mostrarLineaPantalla( const jugador &registro )
+void entrenador::mostrarLineaPantalla( const entrenador &registro )
 {
    cout << left << setw( 10 ) << registro.obtenerNumeroId()
           << setw( 15 ) << registro.obtenerApellido().data()
           << setw( 16 ) << registro.obtenerNombre().data()
-          << setw( 10 ) << registro.obtenerEdad()
-          << setw( 17 ) << registro.obtenerEquipo().data()
-          << setw( 5 ) << registro.obtenerPosicion().data()<<endl;
+          << setw( 25 ) << registro.obtenerNac().data()
+          << setw( 17 ) << registro.obtenerEquipo().data()<<endl;
 } // fin de la función mostrarLineaPantalla
 
 // obtener el valor del número de cuenta del usuario
-int jugador::obtenerId( const char * const indicador )
+int entrenador::obtenerId( const char * const indicador )
 {
    int numeroId;
 
@@ -436,64 +409,64 @@ int jugador::obtenerId( const char * const indicador )
    return numeroId;
 
 } // fin de la función obtenerCuenta
-void jugador::crearArchivoJugador()
+void entrenador::crearArchivoEntrenador()
 {
-    ofstream jugadorSalida( "jugadores.dat", ios::out | ios::binary );
+    ofstream entrenadorSalida( "entrenadores.dat", ios::out | ios::binary );
    // salir del programa si ofstream no pudo abrir el archivo
-   if ( !jugadorSalida ) {
+   if ( !entrenadorSalida ) {
       cerr << "No se pudo abrir el archivo." << endl;
       exit( 1 );
 
    } // fin de instrucción if
 
    // crear DatosCliente sin información
-   jugador jugadorEnBlanco;
+   entrenador entrenadorEnBlanco;
 
    // escribir 100 registros en blanco en el archivo
    for ( int i = 0; i < 1000; i++ )
-      jugadorSalida.write(
-         reinterpret_cast< const char * >( &jugadorEnBlanco ),
-         sizeof( jugador ) );
+      entrenadorSalida.write(
+         reinterpret_cast< const char * >( &entrenadorEnBlanco ),
+         sizeof( entrenador ) );
 }
 
-fstream jugador::inicioArchivo(){
-    jugador player;
-        fstream jugadorEntradaSalida( "jugadores.dat", ios::in | ios::out | ios::binary);
+fstream entrenador::inicioArchivo(){
+    entrenador player;
+        fstream entrenadorEntradaSalida( "entrenadores.dat", ios::in | ios::out | ios::binary);
 
    // salir del programa si fstream no puede abrir el archivo
-    if ( !jugadorEntradaSalida ) {
+    if ( !entrenadorEntradaSalida ) {
       cerr << "No se pudo abrir el archivo." << endl;
-      player.crearArchivoJugador();
+      player.crearArchivoEntrenador();
       cout <<  "Archivo creado satisfactoriamente, pruebe de nuevo";
       exit ( 1 );
 
     }
-    return jugadorEntradaSalida;
+    return entrenadorEntradaSalida;
 }
 
-void jugador::busquedaRegistro(fstream &actualizarArchivo)
+void entrenador::busquedaRegistro(fstream &actualizarArchivo)
 {
 
-       int numeroId = obtenerId( "Escriba el ID del jugador a buscar" );
+       int numeroId = obtenerId( "Escriba el ID del entrenador a buscar" );
 
    // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
    actualizarArchivo.seekg(
-      ( numeroId - 1 ) * sizeof( jugador ) );
+      ( numeroId - 1 ) * sizeof( entrenador ) );
 
    // leer el primer registro del archivo
-   jugador player;
+   entrenador player;
    actualizarArchivo.read( reinterpret_cast< char * >( &player ),
-      sizeof( jugador ) );
+      sizeof( entrenador ) );
 if ( player.obtenerNumeroId() != 0 ) {
       // actualizar el saldo del registro
       cout << left << setw( 10 ) << "ID" << setw( 16 )
        << "Apellido" << setw( 17 ) << "Nombre"
-       << setw( 10 ) <<"Edad"<<setw( 18 )<<"Equipo"<<setw( 5 )<<"Posicion" << endl;
+       << setw( 25 ) <<"Fecha de Nacimiento"<<setw( 18 )<<"Equipo"<< endl;
       mostrarLinea( cout, player );
 
       // desplazar el apuntador de posición de archivo hasta el registro correcto en el archivo
       actualizarArchivo.seekp(
-         ( numeroId - 1 ) * sizeof( jugador ) );
+         ( numeroId - 1 ) * sizeof( entrenador ) );
 
    } // fin de instrucción if
 
@@ -503,4 +476,3 @@ if ( player.obtenerNumeroId() != 0 ) {
          << " aun no existe" << endl;
 
 }
-
