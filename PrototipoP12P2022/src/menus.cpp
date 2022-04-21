@@ -85,7 +85,7 @@ int choice;
         cout<<"Catalogo Paises"<<endl;
 		break;
 	case 2:
-        cout<<"Catalogo Puestos"<<endl;
+        catalogoPuestos();
 		break;
 	case 3:
 	    catalogoEquipos();
@@ -108,9 +108,77 @@ int choice;
 
 menus::menuProcesos()
     {
+    equipos team;
+    fstream equiposEntradaSalida = team.inicioArchivo();
+    jugador player;
+    fstream jugadorEntradaSalida = player.inicioArchivo();
+    entrenador trainer;
+    fstream entrenadorEntradaSalida = trainer.inicioArchivo();
+    puesto puest;
+    fstream puestoEntradaSalida = puest.inicioArchivo();
+    //pais p1;
+    //fstream paisEntradaSalida = p1.inicioArchivo();
+
+    int choice;
+	char x;
+	do
+    {
 	system("cls");
 	cout<<"\t\t\t    PROCESOS     "<<endl;
 	cout<<"\t\t\t"<<endl;
+	cout<<"\t\t\t 1. Consulta Equipos"<<endl;
+	cout<<"\t\t\t 2. Consulta Jugadores"<<endl;
+	cout<<"\t\t\t 3. Consulta Entrenadores"<<endl;
+	cout<<"\t\t\t 4. Consulta Puestos"<<endl;
+    cout<<"\t\t\t 5. Consulta Paises"<<endl;
+    cout<<"\t\t\t 6. Salir"<<endl;
+	cout<<"\t\t\t"<<endl;
+	cout<<"\t\t\tOpcion a escoger:[1/2/3/4/5/6]"<<endl;
+	cout<<"\t\t\t"<<endl;
+	cout<<"Ingresa una Opcion: ";
+    cin>>choice;
+
+    switch(choice)
+    {
+    case 1:
+        team.consultarRegistro(equiposEntradaSalida);
+        cout << "" << endl;
+        cout << "Presiona enter para continuar" << endl;
+		break;
+	case 2:
+        player.consultarRegistro(jugadorEntradaSalida);
+        cout << "" << endl;
+        cout << "Presiona enter para continuar" << endl;
+		break;
+	case 3:
+	    trainer.consultarRegistro(entrenadorEntradaSalida);
+        cout << "" << endl;
+        cout << "Presiona enter para continuar" << endl;
+		break;
+	case 4:
+	    puest.consultarRegistro(puestoEntradaSalida);
+        cout << "" << endl;
+        cout << "Presiona enter para continuar" << endl;
+		break;
+    case 5:
+        //p1.consultarRegistro(paisEntradaSalida);
+        //cout << "" << endl;
+        //cout << "Presiona enter para continuar" << endl;
+		break;
+    case 6:
+        cout<<"Presione Enter para confirmar"<<endl;
+        break;
+	default:
+		cout<<"\n\t\t\t Opcion invalida...Por favor prueba otra vez..";
+	}
+    equiposEntradaSalida.clear();
+    jugadorEntradaSalida.clear();
+    entrenadorEntradaSalida.clear();
+    puestoEntradaSalida.clear();
+    //equiposEntradaSalida.clear(); // reinicializar indicador de fin de archivo
+    getch();
+    }while(choice!= 6);
+    return 0;
 
 }
 
