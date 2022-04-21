@@ -1,9 +1,10 @@
 #include <iostream>
-
+#include "menus.h"
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
-    return 0;
+    menus menuG;
+    menuG.menuGeneral();
 }
+

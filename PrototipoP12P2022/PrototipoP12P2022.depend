@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1650558731 source:c:\users\jawic\parcial2progra\parcial2p1\prototipop12p2022\main.cpp
+	<iostream>
+	"menus.h"
+
+1650559454 c:\users\jawic\parcial2progra\parcial2p1\prototipop12p2022\include\menus.h
+
+1650559423 source:c:\users\jawic\parcial2progra\parcial2p1\prototipop12p2022\src\menus.cpp
+	<iostream>
+	"menus.h"
+
