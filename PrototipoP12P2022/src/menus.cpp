@@ -185,7 +185,7 @@ menus::menuProcesos()
 
 menus::menuReportes(){
 
-    /*equipos team;
+    equipos team;
     fstream equiposEntradaSalida = team.inicioArchivo();
     jugador player;
     fstream jugadorEntradaSalida = player.inicioArchivo();
@@ -194,7 +194,7 @@ menus::menuReportes(){
     puesto puest;
     fstream puestoEntradaSalida = puest.inicioArchivo();
     pais p1;
-    fstream paisEntradaSalida = p1.inicioArchivo();*/
+    fstream paisEntradaSalida = p1.inicioArchivo();
 
 
 int choice;
@@ -219,39 +219,39 @@ int choice;
     switch(choice)
     {
     case 1:
-        /*p1.imprimirRegistro(paisEntradaSalida);
+        p1.imprimirRegistro(paisEntradaSalida);
         cout << "" << endl;
         cout<<"Reporte de paises impreso satisfactoriamente"<<endl;
         cout << "" << endl;
-        cout << "Presiona enter para continuar" << endl;*/
+        cout << "Presiona enter para continuar" << endl;
 		break;
 	case 2:
-        /*puest.imprimirRegistro(puestoEntradaSalida);
+        puest.imprimirRegistro(puestoEntradaSalida);
         cout << "" << endl;
         cout<<"Reporte de puestos impreso satisfactoriamente"<<endl;
         cout << "" << endl;
-        cout << "Presiona enter para continuar" << endl;*/
+        cout << "Presiona enter para continuar" << endl;
 		break;
 	case 3:
-	    /*team.imprimirRegistro(equiposEntradaSalida);
+	    team.imprimirRegistro(equiposEntradaSalida);
         cout << "" << endl;
         cout<<"Reporte de equipos impreso satisfactoriamente"<<endl;
         cout << "" << endl;
-        cout << "Presiona enter para continuar" << endl;*/
+        cout << "Presiona enter para continuar" << endl;
 		break;
 	case 4:
-	    /*player.imprimirRegistro(jugadorEntradaSalida);
+	    player.imprimirRegistro(jugadorEntradaSalida);
         cout << "" << endl;
         cout<<"Reporte de jugadores impreso satisfactoriamente"<<endl;
         cout << "" << endl;
-        cout << "Presiona enter para continuar" << endl;*/
+        cout << "Presiona enter para continuar" << endl;
         break;
 	case 5:
-        /*trainer.imprimirRegistro(entrenadorEntradaSalida);
+        trainer.imprimirRegistro(entrenadorEntradaSalida);
         cout << "" << endl;
         cout<<"Reporte de entrenadores impreso satisfactoriamente"<<endl;
         cout << "" << endl;
-        cout << "Presiona enter para continuar" << endl;*/
+        cout << "Presiona enter para continuar" << endl;
 		break;
     case 6:
         cout<<"Presione Enter para confirmar"<<endl;
@@ -259,11 +259,11 @@ int choice;
 	default:
 		cout<<"\n\t\t\t Opcion invalida...Por favor prueba otra vez..";
 	}
-    /*equiposEntradaSalida.clear();
+    equiposEntradaSalida.clear();
     jugadorEntradaSalida.clear();
     entrenadorEntradaSalida.clear();
     puestoEntradaSalida.clear();
-    paisEntradaSalida.clear();*/
+    paisEntradaSalida.clear();
     getch();
     }while(choice!= 6);
     return 0;
