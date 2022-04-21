@@ -14,6 +14,8 @@ class menus
         catalogoEquipos();
         catalogoJugadores();
         catalogoEntrenadores();
+        catalogoPuestos();
+        catalogoPaises();
 
     protected:
 
