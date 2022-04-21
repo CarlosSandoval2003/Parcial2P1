@@ -50,6 +50,19 @@ class equipos
         void establecerJugadores( int );
         int obtenerJugadores() const;
 
+        void imprimirRegistro( fstream& );
+        void actualizarRegistro( fstream& );
+        void nuevoRegistro( fstream& );
+        void eliminarRegistro( fstream& );
+        void mostrarLinea( ostream&, const equipos & );
+        int obtenerId( const char * const );
+        void crearArchivoEquipos();
+        void consultarRegistro( fstream& );
+        void busquedaRegistro(fstream&);
+        void mostrarLineaPantalla( const equipos &);
+        fstream inicioArchivo();
+
+
     private:
         int numeroId;
         char nombre[ 15 ];

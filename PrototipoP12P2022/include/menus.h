@@ -11,6 +11,7 @@ class menus
         menuCatalogos();
         menuProcesos();
         menuReportes();
+        catalogoEquipos();
 
     protected:
 

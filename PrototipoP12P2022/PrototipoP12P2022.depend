@@ -13,13 +13,14 @@
 	<iostream>
 	"menus.h"
 
-1650561426 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\menus.cpp
+1650565036 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\menus.cpp
 	<iostream>
 	"menus.h"
+	"equipos.h"
 
-1650560027 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\menus.h
+1650564551 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\menus.h
 
-1650561312 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\equipos.cpp
+1650564189 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\equipos.cpp
 	"equipos.h"
 	<iostream>
 	<conio.h>
@@ -28,7 +29,7 @@
 	<iomanip>
 	<cstdlib>
 
-1650561299 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\equipos.h
+1650564122 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\equipos.h
 	<iostream>
 	<conio.h>
 	<fstream>
