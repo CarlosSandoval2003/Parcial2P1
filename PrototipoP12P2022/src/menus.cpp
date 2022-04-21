@@ -3,6 +3,7 @@
 #include "equipos.h"
 #include "jugador.h"
 #include "entrenador.h"
+#include "puesto.h"
 using namespace std;
 
 menus::menus()
@@ -384,6 +385,73 @@ menus::catalogoEntrenadores()
     }while(choice!= 6);
     return 0;
 
+}
 
+
+menus::catalogoPuestos()
+{
+    puesto player;
+    fstream puestoEntradaSalida = player.inicioArchivo();
+
+    int choice;
+	char x;
+	do
+    {
+	system("cls");
+	cout<<"\t\t\t    PUESTOS     "<<endl;
+	cout<<"\t\t\t"<<endl;
+	cout<<"\t\t\t 1. Consultar"<<endl;
+	cout<<"\t\t\t 2. Agregar"<<endl;
+	cout<<"\t\t\t 3. Eliminar"<<endl;
+	cout<<"\t\t\t 4. Modificar"<<endl;
+    cout<<"\t\t\t 5. Buscar"<<endl;
+    cout<<"\t\t\t 6. Salir"<<endl;
+	cout<<"\t\t\t"<<endl;
+	cout<<"\t\t\tOpcion a escoger:[1/2/3/4/5/6]"<<endl;
+	cout<<"\t\t\t"<<endl;
+	cout<<"Ingresa una Opcion: ";
+    cin>>choice;
+
+    switch(choice)
+    {
+    case 1:
+        player.consultarRegistro(puestoEntradaSalida);
+        cout << "" << endl;
+        cout << "Presiona enter para continuar" << endl;
+		break;
+	case 2:
+        player.nuevoRegistro(puestoEntradaSalida);
+        cout << "" << endl;
+        cout<<"Puesto agregado satisfactoriamente"<<endl;
+        cout << "" << endl;
+        cout << "Presiona enter para continuar" << endl;
+		break;
+	case 3:
+	    player.eliminarRegistro(puestoEntradaSalida);
+        cout << "" << endl;
+        cout << "Presiona enter para continuar" << endl;
+		break;
+	case 4:
+	    player.actualizarRegistro(puestoEntradaSalida);
+        cout << "" << endl;
+        cout<<"Puesto modificado satisfactoriamente"<<endl;
+        cout << "" << endl;
+        cout << "Presiona enter para continuar" << endl;
+        break;
+    case 5:
+        player.busquedaRegistro(puestoEntradaSalida);
+        cout << "" << endl;
+        cout << "Presiona enter para continuar" << endl;
+        break;
+    case 6:
+        cout<<"Presione Enter para confirmar"<<endl;
+        break;
+	default:
+		cout<<"\n\t\t\t Opcion invalida...Por favor prueba otra vez..";
+	}
+    puestoEntradaSalida.clear(); // reinicializar indicador de fin de archivo
+    getch();
+    }while(choice!= 6);
+    return 0;
 
 }
