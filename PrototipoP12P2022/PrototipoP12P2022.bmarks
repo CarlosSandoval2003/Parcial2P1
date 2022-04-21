@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<BrowseTracker_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="src\equipos.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="8260" topLine="0" />
+	</File>
+	<File name="include\jugador.h" open="0" top="0" tabpos="5">
+		<Cursor position="1852" topLine="41" />
+	</File>
+	<File name="src\Usuarios.cpp" open="0" top="0" tabpos="9">
+		<Cursor position="1825" topLine="31" />
+	</File>
+	<File name="include\equipos.h" open="0" top="0" tabpos="5">
+		<Cursor position="1713" topLine="31" />
+	</File>
+	<File name="src\puesto.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="21" topLine="0" />
+	</File>
+	<File name="src\jugador.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="8723" topLine="276" />
+	</File>
+	<File name="src\pais.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="8720" topLine="288" />
+	</File>
+	<File name="src\entrenador.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="14857" topLine="382" />
+	</File>
+	<File name="include\menus.h" open="1" top="0" tabpos="3">
+		<Cursor position="356" topLine="0" />
+	</File>
+	<File name="src\menus.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="6991" topLine="250" />
+		<BrowseMarks positions="" />
+	</File>
+	<File name="include\Usuarios.h" open="0" top="0" tabpos="8">
+		<Cursor position="40" topLine="0" />
+	</File>
+	<File name="main.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="357" topLine="0" />
+	</File>
+	<File name="include\entrenador.h" open="0" top="0" tabpos="0">
+		<Cursor position="1567" topLine="8" />
+	</File>
+</BrowseTracker_layout_file>

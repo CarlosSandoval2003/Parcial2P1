@@ -22,7 +22,7 @@
 	"entrenador.h"
 	"puesto.h"
 
-1650575478 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\menus.h
+1650575978 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\menus.h
 
 1650569547 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\equipos.cpp
 	"equipos.h"
@@ -80,7 +80,7 @@
 	<iomanip>
 	<cstdlib>
 
-1650574269 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\puesto.cpp
+1650575978 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\puesto.cpp
 	"puesto.h"
 	<iostream>
 	<conio.h>
@@ -89,14 +89,14 @@
 	<iomanip>
 	<cstdlib>
 
-1650573972 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\puesto.h
+1650575978 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\puesto.h
 	<iostream>
 	<conio.h>
 	<fstream>
 	<iomanip>
 	<cstdlib>
 
-1650575314 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\pais.cpp
+1650575978 source:c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\src\pais.cpp
 	"pais.h"
 	<iostream>
 	<conio.h>
@@ -105,7 +105,7 @@
 	<iomanip>
 	<cstdlib>
 
-1650575328 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\pais.h
+1650575978 c:\users\jawic\parcial2p1\parcial2p1\prototipop12p2022\include\pais.h
 	<iostream>
 	<conio.h>
 	<fstream>
