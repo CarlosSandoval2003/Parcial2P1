@@ -27,7 +27,6 @@ int choice;
 	cout<<"\t\t\t 2. Procesos"<<endl;
 	cout<<"\t\t\t 3. Reportes"<<endl;
 	cout<<"\t\t\t 4. Salir"<<endl;
-
 	cout<<"\t\t\t"<<endl;
 	cout<<"\t\t\tOpcion a escoger:[1/2/3/4]"<<endl;
 	cout<<"\t\t\t"<<endl;
