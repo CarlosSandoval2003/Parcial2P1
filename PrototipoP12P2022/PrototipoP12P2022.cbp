@@ -35,11 +35,13 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Usuarios.h" />
+		<Unit filename="include/entrenador.h" />
 		<Unit filename="include/equipos.h" />
 		<Unit filename="include/jugador.h" />
 		<Unit filename="include/menus.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Usuarios.cpp" />
+		<Unit filename="src/entrenador.cpp" />
 		<Unit filename="src/equipos.cpp" />
 		<Unit filename="src/jugador.cpp" />
 		<Unit filename="src/menus.cpp" />

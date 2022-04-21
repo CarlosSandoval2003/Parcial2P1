@@ -13,6 +13,7 @@ class menus
         menuReportes();
         catalogoEquipos();
         catalogoJugadores();
+        catalogoEntrenadores();
 
     protected:
 
